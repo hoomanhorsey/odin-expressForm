@@ -1,0 +1,26 @@
+{
+  "name": "odin-nodeexpressform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoomanhorsey/odin-nodeExpressForm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hoomanhorsey/odin-nodeExpressForm/issues"
+  },
+  "homepage": "https://github.com/hoomanhorsey/odin-nodeExpressForm#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1"
+  }
+}
