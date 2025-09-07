@@ -9,7 +9,8 @@
     <ul>
       <% if (locals.users) {%> <% users.forEach(user => { %>
       <li>
-        ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>
+        ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>,
+        Email: <%= user.email %>, Age: <%= user.age %>, Bio: <%= user.bio %>
       </li>
       <a href="/<%= user.id %>/update">Update</a>
       <!-- This time we're sending a POST request to our route, so we need a form. -->
@@ -29,5 +30,18 @@
       <% }); %> <% } %>
     </ul>
     <a href="/create">Create a user</a>
+
+    <br />
+
+    <h2>Search for user</h2>
+    <form action="/search" method="GET">
+      <label for="firstName">First Name: </label>
+      <input type="text" name="firstName" id="firstName" />
+      <label for="lastName">Last Name: </label>
+      <input type="text" name="lastName" id="lastName" />
+      <label for="email">Email: </label>
+      <input type="text" name="email" id="email" />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>

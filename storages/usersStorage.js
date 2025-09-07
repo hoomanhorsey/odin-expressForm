@@ -2,13 +2,30 @@
 // This class lets us simulate interacting with a database.
 class UsersStorage {
   constructor() {
-    this.storage = {};
+    this.storage = [
+      {
+        id: 1,
+        firstName: "Poo",
+        lastName: "Brains",
+        email: "poobrain@gmail.com",
+        age: "32",
+        bio: "Lots of brain, mainly made of Poo",
+      },
+      {
+        id: 2,
+        firstName: "Bum",
+        lastName: "Features",
+        email: "bumfeatures@gmail.com",
+        age: "43",
+        bio: "Nice features, but they look like a bum",
+      },
+    ];
     this.id = 0;
   }
 
-  addUser({ firstName, lastName }) {
+  addUser({ firstName, lastName, email, age, bio }) {
     const id = this.id;
-    this.storage[id] = { id, firstName, lastName };
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
     this.id++;
   }
 
@@ -20,8 +37,8 @@ class UsersStorage {
     return this.storage[id];
   }
 
-  updateUser(id, { firstName, lastName }) {
-    this.storage[id] = { id, firstName, lastName };
+  updateUser(id, { firstName, lastName, email, age, bio }) {
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
   }
 
   deleteUser(id) {
