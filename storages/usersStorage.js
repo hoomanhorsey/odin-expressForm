@@ -19,6 +19,14 @@ class UsersStorage {
         age: "43",
         bio: "Nice features, but they look like a bum",
       },
+      {
+        id: 3,
+        firstName: "Shitfor",
+        lastName: "Brains",
+        email: "shitforbrain@gmail.com",
+        age: "34",
+        bio: "Quite a bit of brain, mainly made of Shit",
+      },
     ];
     this.id = 0;
   }

@@ -95,52 +95,54 @@ exports.usersDeletePost = (req, res) => {
 };
 
 exports.usersSearch = (req, res) => {
+  // Extract search fields
   const firstName = req.query.firstName;
   const lastName = req.query.lastName;
   const email = req.query.email;
 
+  // Extract user mock database
   const users = usersStorage.getUsers();
-  console.log(firstName, lastName, email);
 
-  console.log(users);
+  // Set temp search variables
+  let searchResult = [];
+  let searchValue;
+  let searchField;
 
+  // If firstName is falsey, then entire code block will not run
   if (firstName) {
-    console.log("there is a firstname");
+    searchValue = firstName;
+    searchField = "firstName";
+    searchResult = searchUserObject(users, searchField, searchValue);
   }
+  // If lasttName is falsey, then entire code block will not run
   if (lastName) {
-    console.log("there is a lastName");
+    searchValue = lastName;
+    searchField = "lastName";
+    if (searchResult != 0) {
+      searchResult = searchUserObject(searchResult, searchField, searchValue);
+      tempSearchResult = searchResult;
+    } else {
+      searchResult = searchUserObject(users, searchField, searchValue);
+    }
+  }
+  // If email is falsey, then entire code block will not run
+  if (email) {
+    searchValue = email;
+    searchField = "email";
+    if (searchResult != 0) {
+      searchResult = searchUserObject(searchResult, searchField, searchValue);
+      tempSearchResult = searchResult;
+    } else {
+      searchResult = searchUserObject(users, searchField, searchValue);
+    }
   }
 
-  const searchValue = firstName;
-  const searchField = "firstName";
-
-  const searchResult = searchUserObject(users, searchField, searchValue);
-  const searchResults = users.filter((user) => user.firstName === firstName);
-
-  console.log(searchResult);
-
-  // Get details from req.query: firstname, lastname, email
-  // get storage from usersStorage.getUsers - do I need to get it or can I access from the usersStroage ojbect?
-  // if firstname, map across firstnames,
-  // ---- if found, if lastname, map across lastnames
-  //        --- else, else, say no person found
-
-  // ---- if found, if email, map across emails.
-  ///         --- else, produce person
-  // -----if found, present person
-
-  // if !firstname, then map across lastname
-  // ---- if found, if email, map across email
-  //        --- else, produce person
-  // if found, produce email.
-  // -- else, say no person found
-
-  // Get reg.query.firstname
-
-  res.redirect("/");
+  res.render("search", {
+    title: "Search Results",
+    searchResult: searchResult,
+  });
 };
 
 function searchUserObject(userObject, searchField, searchValue) {
-  console.log(searchField, searchValue);
   return userObject.filter((user) => user[searchField] === searchValue);
 }

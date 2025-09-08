@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <% if (searchResult.length >0 ) {%> <% searchResult.forEach(user => { %>
+      <li>
+        ID: <%= user.id %>, Name: <%= user.firstName %> <%= user.lastName %>,
+        Email: <%= user.email %>, Age: <%= user.age %>, Bio: <%= user.bio %>
+        <br />
+        <a href="/">Back to home</a>
+      </li>
+
+      <% }); %> <% }else { %>
+      <p>No result</p>
+      <a href="/">Back to home</a>
+
+      <%} %>
+    </ul>
+  </body>
+</html>
